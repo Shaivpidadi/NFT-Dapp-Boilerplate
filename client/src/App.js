@@ -3,9 +3,10 @@ import MetaMaskOnboarding from "@metamask/onboarding";
 import { useWeb3React } from "@web3-react/core";
 
 import { injected } from "./utils/connectors";
+import { useEagerConnect, useInactiveListener } from "./hooks";
+import MetamaskButton from "./components/MetamaskButton/MetamaskButton";
 
 import "./App.css";
-import MetamaskButton from "./components/MetamaskButton/MetamaskButton";
 
 const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
@@ -16,6 +17,12 @@ const App = () => {
 
   const { account, error, active, activate, connector } = useWeb3React();
   const onboarding = useRef();
+
+  // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
+  const triedEager = useEagerConnect();
+
+  // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
+  useInactiveListener(!triedEager || !!activatingConnector);
 
   useEffect(() => {
     if (activatingConnector && activatingConnector === connector) {
@@ -43,7 +50,7 @@ const App = () => {
   useEffect(() => {
     if (account && active && !error) {
       // history.push("/claim");
-      alert("active");
+      // alert("active");
     }
   }, [account, active, error]);
 
@@ -58,10 +65,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <MetamaskButton
-        title={metamaskButtonText}
-        onConnectWithMetamaskClick={onConnectWithMetamaskClick}
-      />
+      {!active ? (
+        <MetamaskButton
+          title={metamaskButtonText}
+          onConnectWithMetamaskClick={onConnectWithMetamaskClick}
+        />
+      ) : (
+        <p>{account}</p>
+      )}
     </div>
   );
 };
