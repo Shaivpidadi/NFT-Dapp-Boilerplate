@@ -1,10 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Web3ReactProvider } from "@web3-react/core";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import getLibrary from "./utils/getLibrary";
+
+import "./index.css";
+
+ReactDOM.render(
+  <Web3ReactProvider getLibrary={getLibrary}>
+    <App />
+  </Web3ReactProvider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
