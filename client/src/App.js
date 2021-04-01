@@ -4,8 +4,8 @@ import { useWeb3React } from "@web3-react/core";
 
 import { injected } from "./utils/connectors";
 
-import metamaskLogo from "./assets/images/metamask.png";
 import "./App.css";
+import MetamaskButton from "./components/MetamaskButton/MetamaskButton";
 
 const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
@@ -58,14 +58,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="login-button">
-        <div className="my-card" onClick={() => onConnectWithMetamaskClick()}>
-          <p>{metamaskButtonText}</p>
-          <div>
-            <img src={metamaskLogo} width="30" height="auto" alt="logo" />
-          </div>
-        </div>
-      </div>
+      <MetamaskButton
+        title={metamaskButtonText}
+        onConnectWithMetamaskClick={onConnectWithMetamaskClick}
+      />
     </div>
   );
 };

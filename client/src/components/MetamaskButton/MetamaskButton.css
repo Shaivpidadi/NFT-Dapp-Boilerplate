@@ -1,0 +1,17 @@
+.loginCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  border-radius: 8px;
+  background-color: #1d1e1f;
+  font-size: 18px;
+  margin-top: 15px;
+  width: 300px;
+  color: white;
+}
+
+.loginCard:hover {
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
