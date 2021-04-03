@@ -15,7 +15,6 @@ const useInactiveListener = (suppress = false) => {
         });
       };
       const handleAccountsChanged = (accounts) => {
-        console.log("resr");
         if (accounts.length > 0) {
           activate(injected, undefined, true).catch((error) => {
             console.error("Failed to activate after accounts changed", error);

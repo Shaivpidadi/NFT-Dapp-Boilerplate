@@ -7,6 +7,7 @@ import { useEagerConnect, useInactiveListener } from "./hooks";
 import MetamaskButton from "./components/MetamaskButton/MetamaskButton";
 
 import "./App.css";
+import DummyNFT from "./components/DummyNFT/DummyNFT";
 
 const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
@@ -71,7 +72,7 @@ const App = () => {
           onConnectWithMetamaskClick={onConnectWithMetamaskClick}
         />
       ) : (
-        <p>{account}</p>
+        <DummyNFT />
       )}
     </div>
   );
