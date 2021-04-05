@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import MetaMaskOnboarding from "@metamask/onboarding";
 import { useWeb3React } from "@web3-react/core";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { injected } from "./utils/connectors";
 import { useEagerConnect, useInactiveListener } from "./hooks";
 import MetamaskButton from "./components/MetamaskButton/MetamaskButton";
+import Dashboard from "./views/Dashboard/Dashboard";
 
 import "./App.css";
-import DummyNFT from "./components/DummyNFT/DummyNFT";
 
 const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
@@ -50,8 +51,7 @@ const App = () => {
 
   useEffect(() => {
     if (account && active && !error) {
-      // history.push("/claim");
-      // alert("active");
+      // history.push("/dashboard");
     }
   }, [account, active, error]);
 
@@ -64,17 +64,42 @@ const App = () => {
     }
   };
 
-  return (
-    <div className="App">
-      {!active ? (
-        <MetamaskButton
-          title={metamaskButtonText}
-          onConnectWithMetamaskClick={onConnectWithMetamaskClick}
+  let mainContent = (
+    <>
+      <Route
+        exact
+        path="/"
+        component={(props) => (
+          <MetamaskButton
+            {...props}
+            title={metamaskButtonText}
+            onConnectWithMetamaskClick={onConnectWithMetamaskClick}
+          />
+        )}
+      />
+      {localStorage.getItem("userData") === null && <Redirect to="/" />}
+    </>
+  );
+
+  if (active) {
+    mainContent = (
+      <>
+        <Route
+          path="/"
+          component={React.lazy(() =>
+            import("./views/MainContainer/MainContainer")
+          )}
         />
-      ) : (
-        <DummyNFT />
-      )}
-    </div>
+      </>
+    );
+  }
+
+  return (
+    <React.Suspense fallback={<Dashboard />}>
+      <BrowserRouter>
+        <Switch>{mainContent}</Switch>
+      </BrowserRouter>
+    </React.Suspense>
   );
 };
 

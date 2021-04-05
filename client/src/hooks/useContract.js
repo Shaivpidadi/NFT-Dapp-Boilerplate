@@ -3,7 +3,7 @@ import Web3 from "web3";
 import { useWeb3React } from "@web3-react/core";
 
 const useContract = (address = undefined, ABI, withSignerIfPossible = true) => {
-  const { library, account } = useWeb3React();
+  const { library } = useWeb3React();
 
   const { ethereum } = window;
   window.web3 = new Web3(ethereum);
