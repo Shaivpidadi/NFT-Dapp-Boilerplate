@@ -5,7 +5,6 @@ import { injected } from "../utils/connectors";
 
 const useInactiveListener = (suppress = false) => {
   const { active, error, activate } = useWeb3React();
-
   useEffect(() => {
     const { ethereum } = window;
     if (ethereum && ethereum.on && !active && !error && !suppress) {

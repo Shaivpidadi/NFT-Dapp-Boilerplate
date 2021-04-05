@@ -8,7 +8,6 @@ import Color from "../../contracts/Color.json";
 const DummyNFT = () => {
   const [mintedColors, setMintedColors] = useState([]);
   const [color, setColor] = useState("");
-  const [totalSupply, setTotalSupply] = useState(0);
 
   const { account } = useWeb3React();
   const colorContract = useContract(
@@ -34,32 +33,17 @@ const DummyNFT = () => {
       const totalSupply = await colorContract.methods
         .totalSupply()
         .call({ from: account });
-      console.log({ totalSupply });
-      setTotalSupply(totalSupply);
+
       // Load Colors
       for (var i = 1; i <= totalSupply; i++) {
         const color = await colorContract.methods.colors(i - 1).call();
-        console.log({ color });
-        setMintedColors([...mintedColors, color]);
+        setMintedColors((oldState) => [...oldState, color]);
       }
     };
 
     loadColors();
-  }, [totalSupply]);
+  }, []);
 
-  // const mintedColor = useMemo(async () => {
-  //   const colors = [];
-  //   // Load Colors
-  //   for (var i = 1; i <= totalSupply; i++) {
-  //     const color = await colorContract.methods.colors(i - 1).call();
-  //     console.log({ color });
-  //     // setMintedColors([...mintedColors, color]);
-  //   }
-
-  //   return colors;
-  // }, [totalSupply]);
-
-  console.log({ mintedColors });
   return (
     <div className="container-fluid mt-5">
       <div className="row">

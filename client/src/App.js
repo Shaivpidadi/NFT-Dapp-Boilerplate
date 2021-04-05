@@ -22,6 +22,8 @@ const App = () => {
   // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
   const triedEager = useEagerConnect();
 
+  console.log({ triedEager, activatingConnector });
+  console.log("lll", !triedEager || !!activatingConnector);
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   useInactiveListener(!triedEager || !!activatingConnector);
 
@@ -63,6 +65,7 @@ const App = () => {
       onboarding.current.startOnboarding();
     }
   };
+  console.log({ triedEager, active });
 
   return (
     <div className="App">
