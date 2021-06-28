@@ -1,1 +1,0 @@
-{"ast":null,"code":"import React from 'react';\nexport var ReactReduxContext = /*#__PURE__*/React.createContext(null);\n\nif (process.env.NODE_ENV !== 'production') {\n  ReactReduxContext.displayName = 'ReactRedux';\n}\n\nexport default ReactReduxContext;","map":null,"metadata":{},"sourceType":"module"}
