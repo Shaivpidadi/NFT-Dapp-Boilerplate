@@ -1,0 +1,1 @@
+{"ast":null,"code":"'use strict';\n\nconst table = require('./base-table.json'); // map for code -> print friendly name\n\n\nconst tableByCode = {};\n\nfor (const [name, code] of Object.entries(table)) {\n  if (tableByCode[code] === undefined) tableByCode[code] = name;\n}\n\nmodule.exports = Object.freeze(tableByCode);","map":null,"metadata":{},"sourceType":"script"}

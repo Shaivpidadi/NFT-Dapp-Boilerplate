@@ -1,0 +1,172 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.15",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@metamask/onboarding!",
+  "docComment": "/**\n * A library for building widgets.\n *\n * @remarks\n *\n * The `widget-lib` defines the {@link IWidget} interface and {@link Widget} class, which are used to build widgets.\n *\n * @packageDocumentation\n */\n",
+  "name": "@metamask/onboarding",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@metamask/onboarding!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "@metamask/onboarding!FORWARDER_MODE:var",
+          "docComment": "/**\n * A foo bar\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "FORWARDER_MODE: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    INJECT: \"INJECT\";\n    OPEN_TAB: \"OPEN_TAB\";\n}"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "FORWARDER_MODE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@metamask/onboarding!Onboarding:class",
+          "docComment": "/**\n * A bar foo coo\n *\n * @remarks\n *\n * These are some remarks about the thing\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export default class Onboarding "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Onboarding",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@metamask/onboarding!Onboarding:constructor(1)",
+              "docComment": "/**\n * This is a desc\n *\n * @param forwarderOrigin - the origin to use\n *\n * @param forwarderMode - the forwarder mode from {@link FORWARDER_MODE}\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor({ forwarderOrigin, forwarderMode }?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        forwarderOrigin?: string | undefined;\n        forwarderMode?: \"INJECT\" | undefined;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "{ forwarderOrigin, forwarderMode }",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@metamask/onboarding!Onboarding.isMetaMaskInstalled:member(1)",
+              "docComment": "/**\n * Checks whether the MetaMask extension is installed\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static isMetaMaskInstalled(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "isMetaMaskInstalled"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@metamask/onboarding!Onboarding#startOnboarding:member(1)",
+              "docComment": "/**\n * Starts onboarding by opening the MetaMask download page and the Onboarding forwarder\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "startOnboarding(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "startOnboarding"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@metamask/onboarding!Onboarding#stopOnboarding:member(1)",
+              "docComment": "/**\n * Stops onboarding registration, including removing the injected forwarder (if any)\n *\n * @remarks\n *\n * Typically this function is not necessary, but it can be useful for cases where onboarding completes before the forwarder has registered.\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "stopOnboarding(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "stopOnboarding"
+            }
+          ],
+          "implementsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}

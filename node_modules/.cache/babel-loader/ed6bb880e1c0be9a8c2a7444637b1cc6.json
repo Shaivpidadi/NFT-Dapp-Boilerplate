@@ -1,0 +1,1 @@
+{"ast":null,"code":"module.exports = ensureHeader;\n\nfunction ensureHeader(headers, key, value) {\n  var lower = key.toLowerCase();\n\n  if (!headers[key] && !headers[lower]) {\n    headers[key] = value;\n  }\n}","map":null,"metadata":{},"sourceType":"script"}

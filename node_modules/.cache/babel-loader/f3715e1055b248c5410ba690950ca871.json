@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from 'react'; // TODO: check\n\nvar ToastContext = /*#__PURE__*/React.createContext({\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\n  onClose: function onClose() {}\n});\nexport default ToastContext;","map":null,"metadata":{},"sourceType":"module"}
