@@ -1,5 +1,11 @@
 import React from "react";
 
-const Login = () => <div>Login </div>;
+import MetamaskButton from "../../components/MetamaskButton/MetamaskButton";
+
+const Login = () => (
+  <div>
+    <MetamaskButton />
+  </div>
+);
 
 export default Login;
