@@ -11,15 +11,10 @@ const DummyNFT = () => {
   const { account } = useWeb3React();
   const colorContract = useColorContract();
 
-  const onMintClick = () => {
-    colorContract.methods
-      .mint(color)
-      .send({
-        from: account,
-      })
-      .on("transactionHash", (receipt) => {
-        console.log({ receipt });
-      });
+  const onMintClick = async () => {
+    await colorContract.methods.mint(color).send({
+      from: account,
+    });
     setColor("");
   };
 
@@ -42,7 +37,6 @@ const DummyNFT = () => {
     loadColors();
   }, [colorContract, account]);
 
-  console.log({ mintedColors });
   return (
     <div className="container-fluid mt-5">
       <div className="row">
