@@ -2,19 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useWeb3React } from "@web3-react/core";
 
-import { useContract } from "../../hooks";
-import Color from "../../contracts/Color.json";
+import { useColorContract } from "../../hooks";
 
 const DummyNFT = () => {
   const [mintedColors, setMintedColors] = useState([]);
   const [color, setColor] = useState("");
 
   const { account } = useWeb3React();
-  const colorContract = useContract(
-    "0x42F94aEBBD548AF5F62304AeA2d895F300511dB6",
-    Color.abi,
-    false
-  );
+  const colorContract = useColorContract();
 
   const onMintClick = () => {
     colorContract.methods
@@ -30,6 +25,9 @@ const DummyNFT = () => {
 
   useEffect(() => {
     const loadColors = async () => {
+      if (!colorContract) {
+        return;
+      }
       const totalSupply = await colorContract.methods
         .totalSupply()
         .call({ from: account });
@@ -42,8 +40,9 @@ const DummyNFT = () => {
     };
 
     loadColors();
-  }, []);
+  }, [colorContract, account]);
 
+  console.log({ mintedColors });
   return (
     <div className="container-fluid mt-5">
       <div className="row">
@@ -68,15 +67,15 @@ const DummyNFT = () => {
         </main>
       </div>
       <hr />
-      <div className="row text-center">
+      <div className="container text-center">
         {mintedColors
           ? mintedColors.map((color, key) => {
               return (
-                <div key={key} className="col-md-3 mb-3">
-                  <div
-                    className="token"
-                    style={{ backgroundColor: color }}
-                  ></div>
+                <div
+                  key={key}
+                  className="token"
+                  style={{ backgroundColor: color }}
+                >
                   <div>{color}</div>
                 </div>
               );

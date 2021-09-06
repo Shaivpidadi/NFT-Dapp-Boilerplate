@@ -17,7 +17,7 @@ const useContract = (address = undefined, ABI, withSignerIfPossible = true) => {
       console.error("Failed to get contract", error);
       return null;
     }
-  }, []);
+  }, [library]);
 };
 
 export default useContract;
