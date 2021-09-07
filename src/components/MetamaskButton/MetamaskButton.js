@@ -1,15 +1,17 @@
 import React from "react";
 
-import metamaskLogo from "../../assets/images/metamask.png";
-import "./MetamaskButton.css";
+import WalletButton from "../WalletButton/WalletButton";
 
-const MetamaskButton = ({ onConnectWithMetamaskClick, title }) => {
+import metamaskLogo from "../../assets/images/metamask.png";
+
+const MetamaskButton = ({ title, onMetamaskClick }) => {
   return (
-    <div className="loginCard" onClick={onConnectWithMetamaskClick}>
-      <p>{title}</p>
-      <div>
-        <img src={metamaskLogo} width="30" height="auto" alt="logo" />
-      </div>
+    <div>
+      <WalletButton
+        title={title}
+        logo={metamaskLogo}
+        onConnectClick={onMetamaskClick}
+      />
     </div>
   );
 };

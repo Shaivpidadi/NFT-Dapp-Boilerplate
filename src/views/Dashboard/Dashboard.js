@@ -1,8 +1,8 @@
 import React from "react";
 
-const Dashboard = () => {
-  console.log("dashboard");
-  return <div>Dashboard</div>;
-};
+// Replace with your component
+import DummyNFT from "../../components/DummyNFT/DummyNFT";
+
+const Dashboard = () => <DummyNFT />;
 
 export default Dashboard;

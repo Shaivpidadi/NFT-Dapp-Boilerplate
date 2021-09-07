@@ -13,6 +13,7 @@ import rootReducer from "./store/reducer";
 import rootSaga from "./store/sagas";
 
 import "bootstrap/dist/css/bootstrap.css";
+import "./assets/styles/index.css";
 import "./index.css";
 
 const composeEnhancers =
