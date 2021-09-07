@@ -3,7 +3,7 @@
 <br />
 
 <div align="center"><strong>Start your next dapp / defi project in seconds</strong></div>
-<div align="center">A highly scalable boilerplate and pre added web3 and different wallet support with a focus on performance and best practices</div>
+<div align="center">A highly scalable boilerplate with pre added web3 and different wallets with a focus on performance and best practices</div>
 
 <br />
 
