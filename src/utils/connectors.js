@@ -1,5 +1,15 @@
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+
+import LOGO from "../assets/images/logo192.png";
+
+const INFURA_KEY = process.env.REACT_APP_INFURA_KEY;
+
+const NETWORK_URLS = {
+  1: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
+  3: `https://ropsten.infura.io/v3/${INFURA_KEY}`,
+};
 
 const POLLING_INTERVAL = process.env.REACT_APP_POLLING_INTERVAL;
 
@@ -18,4 +28,10 @@ export const walletconnect = new WalletConnectConnector({
   bridge: "https://bridge.walletconnect.org",
   qrcode: true,
   pollingInterval: POLLING_INTERVAL,
+});
+
+export const walletLink = new WalletLinkConnector({
+  url: NETWORK_URLS[3], // Change according to supported Network Id
+  appName: "NFT Boilerplate",
+  appLogoUrl: LOGO,
 });

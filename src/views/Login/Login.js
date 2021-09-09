@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import MetaMaskOnboarding from "@metamask/onboarding";
 import { useWeb3React } from "@web3-react/core";
 
-import { injected, walletconnect } from "../../utils/connectors";
+import { injected, walletconnect, walletLink } from "../../utils/connectors";
 import { useEagerConnect, useInactiveListener } from "../../hooks";
 
 import MetamaskButton from "../../components/MetamaskButton/MetamaskButton";
 import WalletConnect from "../../components/WalletConnect/WalletConnect";
+import WalletLinkConnect from "../../components/WalletLinkConnect/WalletLinkConnect";
 
 const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
@@ -61,6 +62,11 @@ const Login = () => {
     activate(walletconnect);
   };
 
+  const onLinkConnectClick = () => {
+    setActivatingConnector(walletLink);
+    activate(walletLink);
+  };
+
   return (
     <div className="wallet-wrapper">
       <MetamaskButton
@@ -68,6 +74,7 @@ const Login = () => {
         onMetamaskClick={onConnectWithMetamaskClick}
       />
       <WalletConnect onWalletConnectClick={onConnectWithWalletConnectClick} />
+      <WalletLinkConnect onWalletLinkConnectClick={onLinkConnectClick} />
     </div>
   );
 };

@@ -11,6 +11,7 @@
     "@web3-react/core": "latest",
     "@web3-react/injected-connector": "latest",
     "@web3-react/walletconnect-connector": "^6.2.4",
+    "@web3-react/walletlink-connector": "^6.2.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "react": "16.11.0",
