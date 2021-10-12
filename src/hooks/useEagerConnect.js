@@ -9,6 +9,12 @@ const useEagerConnect = () => {
   const [tried, setTried] = useState(false);
 
   useEffect(() => {
+    const shouldEagerConnect = localStorage.getItem("shouldEagerConnect");
+
+    if (shouldEagerConnect === "false") {
+      return;
+    }
+
     injected.isAuthorized().then((isAuthorized) => {
       if (isAuthorized) {
         activate(injected, undefined, true).catch(() => {
