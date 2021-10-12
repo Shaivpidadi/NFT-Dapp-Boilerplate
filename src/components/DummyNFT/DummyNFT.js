@@ -8,7 +8,7 @@ const DummyNFT = () => {
   const [mintedColors, setMintedColors] = useState([]);
   const [color, setColor] = useState("");
 
-  const { account } = useWeb3React();
+  const { account, deactivate } = useWeb3React();
   const colorContract = useColorContract();
 
   const onMintClick = async () => {
@@ -37,9 +37,17 @@ const DummyNFT = () => {
     loadColors();
   }, [colorContract, account]);
 
+  const onLogoutClick = () => {
+    localStorage.setItem("shouldEagerConnect", false);
+    deactivate();
+  };
+
   return (
     <div className="container-fluid mt-5">
       <div className="row">
+        <div className="logout">
+          <Button onClick={onLogoutClick}>LOGOUT</Button>
+        </div>
         <main role="main" className="col-lg-12 d-flex text-center">
           <div className="content mr-auto ml-auto">
             <h1>Issue Token</h1>

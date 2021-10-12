@@ -20,6 +20,8 @@ const App = () => {
   );
 
   if (active) {
+    localStorage.setItem("shouldEagerConnect", true);
+
     mainContent = (
       <>
         <Route
