@@ -58,6 +58,9 @@ const Login = () => {
   };
 
   const onConnectWithWalletConnectClick = () => {
+    if (connector && connector.walletConnectProvider?.wc?.uri) {
+      connector.walletConnectProvider = undefined;
+    }
     setActivatingConnector(walletconnect);
     activate(walletconnect);
   };
