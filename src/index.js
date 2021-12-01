@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import { Web3ReactProvider } from "@web3-react/core";
@@ -16,17 +16,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./assets/styles/index.css";
 import "./index.css";
 
-const composeEnhancers =
-  process.env.NODE_ENV === "development"
-    ? // eslint-disable-next-line no-underscore-dangle
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose;
-
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+  applyMiddleware(sagaMiddleware)
 );
 
 sagaMiddleware.run(rootSaga);
