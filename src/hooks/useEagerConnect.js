@@ -10,8 +10,9 @@ const useEagerConnect = () => {
 
   useEffect(() => {
     const shouldEagerConnect = localStorage.getItem("shouldEagerConnect");
+    const fortmaticConnect = localStorage.getItem("fortmaticConnect");
 
-    if (shouldEagerConnect === "false") {
+    if (shouldEagerConnect === "false" || fortmaticConnect === "true") {
       return;
     }
 

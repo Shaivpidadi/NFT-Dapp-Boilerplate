@@ -1,12 +1,21 @@
 import { useMemo } from "react";
 import Web3 from "web3";
 import { useWeb3React } from "@web3-react/core";
+import Fortmatic from "fortmatic";
 
 const useContract = (address = undefined, ABI, withSignerIfPossible = true) => {
-  const { library } = useWeb3React();
+  const { library, connector } = useWeb3React();
 
   const { ethereum } = window;
-  window.web3 = new Web3(ethereum);
+  if (connector?.fortmatic) {
+    const fm = new Fortmatic(
+      process.env.REACT_APP_FORTMATIC_API_KEY,
+      process.env.REACT_APP_FORTMATIC_CHAIN_ID_NAME
+    );
+    window.web3 = new Web3(fm.getProvider());
+  } else {
+    window.web3 = new Web3(ethereum);
+  }
 
   return useMemo(() => {
     if (!address || !ABI || !library) return null;

@@ -2,12 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import MetaMaskOnboarding from "@metamask/onboarding";
 import { useWeb3React } from "@web3-react/core";
 
-import { injected, walletconnect, walletLink } from "../../utils/connectors";
+import {
+  injected,
+  walletconnect,
+  walletLink,
+  fortmatic,
+} from "../../utils/connectors"
 import { useEagerConnect, useInactiveListener } from "../../hooks";
 
 import MetamaskButton from "../../components/MetamaskButton/MetamaskButton";
 import WalletConnect from "../../components/WalletConnect/WalletConnect";
 import WalletLinkConnect from "../../components/WalletLinkConnect/WalletLinkConnect";
+import Fortmatic from "../../components/Fortmatic/Fortmatic";
 
 const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
@@ -70,6 +76,12 @@ const Login = () => {
     activate(walletLink);
   };
 
+  const onConnectWithFortmaticClick = () => {
+    setActivatingConnector(fortmatic);
+    activate(fortmatic);
+    localStorage.setItem("fortmaticConnect", "true");
+  }
+
   return (
     <div className="wallet-wrapper">
       <MetamaskButton
@@ -78,6 +90,10 @@ const Login = () => {
       />
       <WalletConnect onWalletConnectClick={onConnectWithWalletConnectClick} />
       <WalletLinkConnect onWalletLinkConnectClick={onLinkConnectClick} />
+      <Fortmatic
+        title="Fortmatic"
+        onFortmaticClick={onConnectWithFortmaticClick}
+      />
     </div>
   );
 };

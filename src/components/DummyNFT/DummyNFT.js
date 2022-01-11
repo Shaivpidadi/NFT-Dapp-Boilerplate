@@ -8,12 +8,16 @@ const DummyNFT = () => {
   const [mintedColors, setMintedColors] = useState([]);
   const [color, setColor] = useState("");
 
-  const { account, deactivate } = useWeb3React();
+  const { account, deactivate, chainId } = useWeb3React();
   const colorContract = useColorContract();
 
   const onMintClick = async () => {
+    const gasLimit = await colorContract.methods
+      .mint(color)
+      .estimateGas({ from: account });
     await colorContract.methods.mint(color).send({
       from: account,
+      gasLimit,
     });
     setColor("");
   };
@@ -27,6 +31,7 @@ const DummyNFT = () => {
         .totalSupply()
         .call({ from: account });
 
+      console.log(totalSupply);
       // Load Colors
       for (var i = 1; i <= totalSupply; i++) {
         const color = await colorContract.methods.colors(i - 1).call();
@@ -38,8 +43,9 @@ const DummyNFT = () => {
   }, [colorContract, account]);
 
   const onLogoutClick = () => {
-    localStorage.setItem("shouldEagerConnect", false);
     deactivate();
+    localStorage.clear();
+    localStorage.setItem("shouldEagerConnect", false);
   };
 
   return (
@@ -51,6 +57,8 @@ const DummyNFT = () => {
         <main role="main" className="col-lg-12 d-flex text-center">
           <div className="content mr-auto ml-auto">
             <h1>Issue Token</h1>
+            <p>account: {account}</p>
+            <p>network Id: {chainId}</p>
             <input
               type="text"
               value={color}
