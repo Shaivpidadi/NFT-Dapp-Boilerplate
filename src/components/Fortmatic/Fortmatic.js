@@ -2,7 +2,7 @@ import React from "react";
 
 import WalletButton from "../WalletButton/WalletButton";
 
-import fortmaticLogo from "../../assets/images/formatice.png";
+import fortmaticLogo from "../../assets/images/fortmatic.png";
 
 const Fortmatic = ({ title, onFortmaticClick }) => {
   return (
