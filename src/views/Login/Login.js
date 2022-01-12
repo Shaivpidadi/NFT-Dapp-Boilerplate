@@ -7,7 +7,7 @@ import {
   walletconnect,
   walletLink,
   fortmatic,
-} from "../../utils/connectors"
+} from "../../utils/connectors";
 import { useEagerConnect, useInactiveListener } from "../../hooks";
 
 import MetamaskButton from "../../components/MetamaskButton/MetamaskButton";
@@ -61,6 +61,7 @@ const Login = () => {
     } else {
       onboarding.current.startOnboarding();
     }
+    localStorage.setItem("fortmaticConnect", "false");
   };
 
   const onConnectWithWalletConnectClick = () => {
@@ -80,7 +81,7 @@ const Login = () => {
     setActivatingConnector(fortmatic);
     activate(fortmatic);
     localStorage.setItem("fortmaticConnect", "true");
-  }
+  };
 
   return (
     <div className="wallet-wrapper">

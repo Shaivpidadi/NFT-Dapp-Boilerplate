@@ -8,7 +8,7 @@ const DummyNFT = () => {
   const [mintedColors, setMintedColors] = useState([]);
   const [color, setColor] = useState("");
 
-  const { account, deactivate, chainId } = useWeb3React();
+  const { account, deactivate } = useWeb3React();
   const colorContract = useColorContract();
 
   const onMintClick = async () => {
@@ -57,8 +57,6 @@ const DummyNFT = () => {
         <main role="main" className="col-lg-12 d-flex text-center">
           <div className="content mr-auto ml-auto">
             <h1>Issue Token</h1>
-            <p>account: {account}</p>
-            <p>network Id: {chainId}</p>
             <input
               type="text"
               value={color}
