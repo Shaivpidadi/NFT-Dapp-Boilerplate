@@ -10,7 +10,7 @@ const useContract = (address = undefined, ABI, withSignerIfPossible = true) => {
   if (connector?.fortmatic) {
     const fm = new Fortmatic(
       process.env.REACT_APP_FORTMATIC_API_KEY,
-      process.env.REACT_APP_FORTMATIC_CHAIN_ID_NAME
+      process.env.REACT_APP_FORTMATIC_CHAIN_NAME
     );
     window.web3 = new Web3(fm.getProvider());
   } else {
