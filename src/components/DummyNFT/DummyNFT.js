@@ -12,8 +12,12 @@ const DummyNFT = () => {
   const colorContract = useColorContract();
 
   const onMintClick = async () => {
+    const gasLimit = await colorContract.methods
+      .mint(color)
+      .estimateGas({ from: account });
     await colorContract.methods.mint(color).send({
       from: account,
+      gasLimit,
     });
     setColor("");
   };
@@ -27,6 +31,7 @@ const DummyNFT = () => {
         .totalSupply()
         .call({ from: account });
 
+      console.log(totalSupply);
       // Load Colors
       for (var i = 1; i <= totalSupply; i++) {
         const color = await colorContract.methods.colors(i - 1).call();
@@ -38,8 +43,9 @@ const DummyNFT = () => {
   }, [colorContract, account]);
 
   const onLogoutClick = () => {
-    localStorage.setItem("shouldEagerConnect", false);
     deactivate();
+    localStorage.clear();
+    localStorage.setItem("shouldEagerConnect", false);
   };
 
   return (

@@ -1,6 +1,7 @@
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import { FortmaticConnector } from "@web3-react/fortmatic-connector";
 
 import LOGO from "../assets/images/logo192.png";
 
@@ -34,4 +35,9 @@ export const walletLink = new WalletLinkConnector({
   url: NETWORK_URLS[3], // Change according to supported Network Id
   appName: "NFT Boilerplate",
   appLogoUrl: LOGO,
+});
+
+export const fortmatic = new FortmaticConnector({
+  apiKey: process.env.REACT_APP_FORTMATIC_API_KEY,
+  chainId: 3,
 });
