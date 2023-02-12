@@ -103,7 +103,7 @@ const DummyNFT = () => {
         </div>
 
       </div>
-      {isLoading && <Loader />}
+      {isLoading && <Loader color={color} />}
     </Fragment>
 
   );
