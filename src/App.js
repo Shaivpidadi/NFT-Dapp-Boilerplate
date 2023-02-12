@@ -36,17 +36,17 @@ const App = () => {
   }
 
   const onChangeNetworkClick = async () => {
-    // Metamask adds Ropsten chain by default, so no need to check wether chain is added or not
+    // Metamask adds Goerli chain by default, so no need to check wether chain is added or not
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x3" }],
+      params: [{ chainId: "0x5" }],
     });
   };
 
   return (
     <React.Suspense fallback={<Loader />}>
       <WrongNetworkModal
-        show={chainId !== 3 && active}
+        show={chainId !== 5 && active}
         onChangeNetworkClick={onChangeNetworkClick}
       />
       <BrowserRouter>

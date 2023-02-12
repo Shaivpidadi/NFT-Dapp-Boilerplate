@@ -2,11 +2,13 @@ import React from "react";
 
 import "./Loader.css";
 
-const Loader = () => {
+const Loader = ({ color }) => {
   return (
-    <div className="lds-ripple">
-      <div />
-      <div />
+    <div className="lds-ellipsis">
+      <div style={{ background: color }} />
+      <div style={{ background: color }} />
+      <div style={{ background: color }} />
+      <div style={{ background: color }} />
     </div>
   );
 };

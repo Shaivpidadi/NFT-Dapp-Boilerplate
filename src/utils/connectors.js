@@ -9,7 +9,7 @@ const INFURA_KEY = process.env.REACT_APP_INFURA_KEY;
 
 const NETWORK_URLS = {
   1: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
-  3: `https://ropsten.infura.io/v3/${INFURA_KEY}`,
+  3: `https://goerli.infura.io/v3/${INFURA_KEY}`,
 };
 
 const POLLING_INTERVAL = process.env.REACT_APP_POLLING_INTERVAL;

@@ -17,8 +17,8 @@ const WrongNetworkModal = ({ onChangeNetworkClick, show }) => {
       <Modal.Body>
         <h4>You're currently on wrong network</h4>
         <p>
-          NFT Boilerplate only supports <strong>Ropsten</strong> network, please
-          switch to <strong>Ropsten</strong> manually or click Switch network
+          NFT Boilerplate only supports <strong>Goerli</strong> network, please
+          switch to <strong>Goerli</strong> manually or click Switch network
           button
         </p>
       </Modal.Body>
